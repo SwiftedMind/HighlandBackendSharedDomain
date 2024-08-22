@@ -2,13 +2,13 @@ import Foundation
 
 public struct ThoughtAnnotationResponse: Codable, Sendable {
   public var annotatedThought: AnnotatedThoughtSchema
-  public var associatedThoughtIds: [Int]
+  public var previousThoughtIds: [Int]
   
   public init(
     annotatedThought: AnnotatedThoughtSchema,
-    associatedThoughtIds: [Int]
+    previousThoughtIds: [Int]
   ) {
     self.annotatedThought = annotatedThought
-    self.associatedThoughtIds = associatedThoughtIds
+    self.previousThoughtIds = previousThoughtIds
   }
 }

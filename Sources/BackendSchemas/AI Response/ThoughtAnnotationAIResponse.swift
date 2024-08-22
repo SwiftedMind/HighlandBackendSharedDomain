@@ -14,6 +14,8 @@ public struct ThoughtAnnotationAIResponse: Codable, Sendable {
   public var isReminder: Bool
   public var requiresAction: Bool
   public var insufficientInformation: Bool
+  
+  public var previousThoughts: [Int]
 
   public init(
     title: String,
@@ -24,7 +26,8 @@ public struct ThoughtAnnotationAIResponse: Codable, Sendable {
     sentiment: String,
     isReminder: Bool,
     requiresAction: Bool,
-    insufficientInformation: Bool
+    insufficientInformation: Bool,
+    previousThoughts: [Int]
   ) {
     self.title = title
     self.basis = basis
@@ -35,6 +38,7 @@ public struct ThoughtAnnotationAIResponse: Codable, Sendable {
     self.isReminder = isReminder
     self.requiresAction = requiresAction
     self.insufficientInformation = insufficientInformation
+    self.previousThoughts = previousThoughts
   }
   
   public struct Event: Codable, Sendable {
