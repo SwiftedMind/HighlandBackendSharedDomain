@@ -2,11 +2,11 @@ import Foundation
 
 public struct ThoughtAnnotationResponse: Codable, Sendable {
   public var annotatedThought: AnnotatedThoughtSchema
-  public var associatedThoughtIds: [String]
+  public var associatedThoughtIds: [Int]
   
   public init(
     annotatedThought: AnnotatedThoughtSchema,
-    associatedThoughtIds: [String]
+    associatedThoughtIds: [Int]
   ) {
     self.annotatedThought = annotatedThought
     self.associatedThoughtIds = associatedThoughtIds
