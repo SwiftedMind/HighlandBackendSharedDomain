@@ -1,4 +1,5 @@
 import Foundation
+import SharedModels
 
 public struct AuthenticationResponse: Codable, Sendable {
   public var authentication: Authentication

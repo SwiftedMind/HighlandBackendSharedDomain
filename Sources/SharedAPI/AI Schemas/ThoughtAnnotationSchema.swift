@@ -1,9 +1,11 @@
-// By Dennis Müller
-
 import Foundation
+import SharedModels
 
-public struct ThoughtRetrievalSchema: Codable, Sendable {
+public struct ThoughtAnnotationSchema: Codable, Sendable {
+  public var title: String
+  public var basis: String
   public var purpose: String
+  public var keywords: [String]
   public var events: [Event]
   public var entities: [Entity]
   
@@ -14,9 +16,12 @@ public struct ThoughtRetrievalSchema: Codable, Sendable {
   public var insufficientInformation: Bool
   
   public var previousThoughts: [Int]
-  
+
   public init(
+    title: String,
+    basis: String,
     purpose: String,
+    keywords: [String],
     events: [Event],
     entities: [Entity],
     sentiment: String,
@@ -25,7 +30,10 @@ public struct ThoughtRetrievalSchema: Codable, Sendable {
     insufficientInformation: Bool,
     previousThoughts: [Int]
   ) {
+    self.title = title
+    self.basis = basis
     self.purpose = purpose
+    self.keywords = keywords
     self.events = events
     self.entities = entities
     self.sentiment = sentiment

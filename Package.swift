@@ -4,19 +4,21 @@
 import PackageDescription
 
 let package = Package(
-    name: "SharedModels",
-    platforms: [.iOS(.v17), .macOS(.v13)],
-    products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "SharedModels",
-            targets: ["SharedModels"]),
-    ],
-    targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
-        .target(
-            name: "SharedModels"),
-
-    ]
+  name: "SharedModels",
+  platforms: [.iOS(.v17), .macOS(.v13)],
+  products: [
+    .library(
+      name: "SharedModels",
+      targets: ["SharedModels"]
+    ),
+    .library(
+      name: "SharedAPI",
+      targets: ["SharedAPI"]
+    )
+    
+  ],
+  targets: [
+    .target(name: "SharedModels"),
+    .target(name: "SharedAPI", dependencies: ["SharedModels"]),
+  ]
 )

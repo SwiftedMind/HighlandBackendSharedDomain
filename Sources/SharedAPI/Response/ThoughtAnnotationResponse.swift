@@ -1,4 +1,5 @@
 import Foundation
+import SharedModels
 
 public struct ThoughtAnnotationResponse: Codable, Sendable {
   public var annotatedThought: ThoughtAnnotation

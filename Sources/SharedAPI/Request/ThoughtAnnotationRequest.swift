@@ -1,4 +1,5 @@
 import Foundation
+import SharedModels
 
 public struct ThoughtAnnotationRequest: Codable, Sendable {
   public var userInput: String
