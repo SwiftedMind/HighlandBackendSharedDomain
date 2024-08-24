@@ -1,5 +1,3 @@
-// By Dennis Müller
-
 import Foundation
 
 public struct ServerStatus: Codable, Sendable, Hashable {

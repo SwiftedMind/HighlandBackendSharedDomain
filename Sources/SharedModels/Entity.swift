@@ -1,7 +1,6 @@
 import Foundation
 
 public struct Entity: Identifiable, Codable, Sendable, Hashable {
-  
   public var id: UUID
   public var kind: Kind
   public var name: String

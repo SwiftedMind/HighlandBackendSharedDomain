@@ -1,5 +1,3 @@
-// By Dennis Müller
-
 import Foundation
 
 public struct ThoughtSummary: Codable, Sendable {

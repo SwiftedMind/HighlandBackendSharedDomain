@@ -1,7 +1,6 @@
 import Foundation
 
 public struct Keyword: Identifiable, Codable, Sendable, Hashable {
-
   public var id: UUID
   public var name: String
   public var createdAt: Date
