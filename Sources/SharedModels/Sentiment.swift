@@ -1,6 +1,6 @@
 import Foundation
 
-public enum SentimentSchema: String, Identifiable, Sendable, Codable, Hashable, CaseIterable {
+public enum Sentiment: String, Identifiable, Sendable, Codable, Hashable, CaseIterable {
   public var id: Self { self }
 
   case negative

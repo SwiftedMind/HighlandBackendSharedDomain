@@ -2,13 +2,11 @@
 
 import Foundation
 
-public struct ThoughtAnnotationAIResponse: Codable, Sendable {
-  public var title: String
-  public var basis: String
+public struct ThoughtRetrievalSchema: Codable, Sendable {
   public var purpose: String
   public var events: [Event]
   public var entities: [Entity]
-
+  
   // Properties
   public var sentiment: String
   public var isReminder: Bool
@@ -16,10 +14,8 @@ public struct ThoughtAnnotationAIResponse: Codable, Sendable {
   public var insufficientInformation: Bool
   
   public var previousThoughts: [Int]
-
+  
   public init(
-    title: String,
-    basis: String,
     purpose: String,
     events: [Event],
     entities: [Entity],
@@ -29,8 +25,6 @@ public struct ThoughtAnnotationAIResponse: Codable, Sendable {
     insufficientInformation: Bool,
     previousThoughts: [Int]
   ) {
-    self.title = title
-    self.basis = basis
     self.purpose = purpose
     self.events = events
     self.entities = entities

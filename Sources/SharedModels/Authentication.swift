@@ -2,7 +2,7 @@
 
 import Foundation
 
-public struct AuthenticationSchema: Sendable, Codable, Hashable {
+public struct Authentication: Sendable, Codable, Hashable {
   public enum Kind: String, Sendable, Codable, Hashable {
     case trial
     case entitlement
@@ -16,6 +16,10 @@ public struct AuthenticationSchema: Sendable, Codable, Hashable {
     self.kind = kind
     self.token = token
     self.expiration = expiration
+  }
+
+  public var isValid: Bool {
+    expiration >= .now
   }
 
   public var isExpired: Bool {

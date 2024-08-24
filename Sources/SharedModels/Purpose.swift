@@ -1,6 +1,6 @@
 import Foundation
 
-public enum PurposeSchema: String, Identifiable, Sendable, Codable, Hashable, CaseIterable {
+public enum Purpose: String, Identifiable, Sendable, Codable, Hashable, CaseIterable {
   public var id: Self { self }
 
   case task

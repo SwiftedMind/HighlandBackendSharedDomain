@@ -2,13 +2,13 @@ import Foundation
 
 public struct ThoughtAnnotationRequest: Codable, Sendable {
   public var userInput: String
-  public var previousThoughts: [PreviousThoughtSchema]
+  public var previousThoughts: [ThoughtSummary]
   public var timeZone: String
   public var memoryItems: [String]
 
   public init(
     userInput: String,
-    previousThoughts: [PreviousThoughtSchema],
+    previousThoughts: [ThoughtSummary],
     timeZone: String,
     memoryItems: [String]
   ) {
@@ -23,9 +23,9 @@ public struct ThoughtAnnotationRequest: Codable, Sendable {
     # User Input
     \(userInput)
 
-    # User Topics: 
+    # Previous Thoughts: 
     \(previousThoughts.map(\.summary).joined(separator: "\n"))
-
+    
     # Memory:
     \(memoryItems.joined(separator: "\n"))
     """

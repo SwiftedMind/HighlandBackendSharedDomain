@@ -1,9 +1,9 @@
 import Foundation
 
 public struct FeedbackRequest: Codable, Sendable {
-  public var feedback: FeedbackDataSchema
+  public var feedback: FeedbackData
 
-  public init(feedback: FeedbackDataSchema) {
+  public init(feedback: FeedbackData) {
     self.feedback = feedback
   }
 }

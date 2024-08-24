@@ -1,9 +1,9 @@
 import Foundation
 
 public struct StatusResponse: Codable, Sendable {
-    public var status: StatusSchema
+    public var status: ServerStatus
 
-    public init(status: StatusSchema) {
+    public init(status: ServerStatus) {
       self.status = status
     }
   }

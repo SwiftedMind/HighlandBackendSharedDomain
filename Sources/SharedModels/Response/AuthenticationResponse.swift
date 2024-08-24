@@ -1,9 +1,9 @@
 import Foundation
 
 public struct AuthenticationResponse: Codable, Sendable {
-  public var authentication: AuthenticationSchema
+  public var authentication: Authentication
 
-  public init(authentication: AuthenticationSchema) {
+  public init(authentication: Authentication) {
     self.authentication = authentication
   }
 }

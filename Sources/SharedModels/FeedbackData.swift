@@ -1,8 +1,6 @@
-// By Dennis Müller
-
 import Foundation
 
-public struct FeedbackDataSchema: Codable, Sendable {
+public struct FeedbackData: Codable, Sendable {
   public var message: String
   public var senderEmail: String?
   public var senderUserId: String?

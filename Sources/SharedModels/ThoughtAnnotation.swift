@@ -1,14 +1,15 @@
 import Foundation
 
-public struct AnnotatedThoughtSchema: Codable, Sendable {
+public struct ThoughtAnnotation: Codable, Sendable {
   public var title: String
   public var basis: String
-  public var purpose: PurposeSchema
-  public var events: [EventSchema]
-  public var entities: [EntitySchema]
+  public var purpose: Purpose
+  public var keywords: [String]
+  public var events: [Event]
+  public var entities: [Entity]
 
   // Properties
-  public var sentiment: SentimentSchema
+  public var sentiment: Sentiment
   public var isReminder: Bool
   public var requiresAction: Bool
   public var insufficientInformation: Bool
@@ -16,10 +17,11 @@ public struct AnnotatedThoughtSchema: Codable, Sendable {
   public init(
     title: String,
     basis: String,
-    purpose: PurposeSchema,
-    events: [EventSchema],
-    entities: [EntitySchema],
-    sentiment: SentimentSchema,
+    purpose: Purpose,
+    keywords: [String],
+    events: [Event],
+    entities: [Entity],
+    sentiment: Sentiment,
     isReminder: Bool,
     requiresAction: Bool,
     insufficientInformation: Bool
@@ -27,6 +29,7 @@ public struct AnnotatedThoughtSchema: Codable, Sendable {
     self.title = title
     self.basis = basis
     self.purpose = purpose
+    self.keywords = keywords
     self.events = events
     self.entities = entities
     self.sentiment = sentiment
