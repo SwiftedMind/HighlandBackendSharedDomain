@@ -1,6 +1,6 @@
 import Foundation
 
-public struct ThoughtAnnotation: Codable, Sendable {
+public struct ThoughtAnnotation: Codable, Sendable, Hashable {
   public var title: String
   public var basis: String
   public var purpose: Purpose

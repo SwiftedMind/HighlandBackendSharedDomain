@@ -8,6 +8,10 @@ let package = Package(
   platforms: [.iOS(.v17), .macOS(.v13)],
   products: [
     .library(
+      name: "SharedUtility",
+      targets: ["SharedUtility"]
+    ),
+    .library(
       name: "SharedModels",
       targets: ["SharedModels"]
     ),
@@ -15,10 +19,10 @@ let package = Package(
       name: "SharedAPI",
       targets: ["SharedAPI"]
     )
-    
   ],
   targets: [
-    .target(name: "SharedModels"),
+    .target(name: "SharedUtility"),
+    .target(name: "SharedModels", dependencies: ["SharedUtility"]),
     .target(name: "SharedAPI", dependencies: ["SharedModels"]),
   ]
 )

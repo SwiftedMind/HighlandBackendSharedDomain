@@ -2,7 +2,7 @@
 
 import Foundation
 
-public struct ServerStatus: Codable, Sendable {
+public struct ServerStatus: Codable, Sendable, Hashable {
   public var updatedAt: Date
   public var sageAvailable: Bool
   public var message: String?

@@ -1,11 +1,19 @@
 import Foundation
 
-public struct Entity: Codable, Sendable {
-  public var kind: EntityKind
+public struct Entity: Identifiable, Codable, Sendable, Hashable {
+  
+  public var id: UUID
+  public var kind: Kind
   public var name: String
   public var createdAt: Date
 
-  public init(kind: EntityKind, name: String, createdAt: Date) {
+  public init(
+    id: UUID = .init(),
+    kind: Kind,
+    name: String,
+    createdAt: Date = .now
+  ) {
+    self.id = id
     self.kind = kind
     self.name = name
     self.createdAt = createdAt
@@ -13,7 +21,7 @@ public struct Entity: Codable, Sendable {
 }
 
 extension Entity {
-  public enum EntityKind: String, Codable, Sendable {
+  public enum Kind: String, Codable, Sendable, Hashable {
     case place
     case location
     case project
