@@ -2,10 +2,12 @@ import Foundation
 
 public struct Event: Codable, Sendable, Hashable {
   public var name: String
-  public var date: String
+  public var day: String?
+  public var time: String?
 
-  public init(name: String, date: String) {
+  public init(name: String, day: String? = nil, time: String? = nil) {
     self.name = name
-    self.date = date
+    self.day = day
+    self.time = time
   }
 }

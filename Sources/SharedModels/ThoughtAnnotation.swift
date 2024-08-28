@@ -1,40 +1,58 @@
 import Foundation
 
 public struct ThoughtAnnotation: Codable, Sendable, Hashable {
-  public var title: String
   public var basis: String
-  public var purpose: Purpose
+  public var title: String
   public var keywords: [String]
   public var events: [Event]
-  public var entities: [Entity]
+  public var locations: [String]
+  public var entities: [String]
 
   // Properties
   public var sentiment: Sentiment
+  public var effort: Effort
+  public var hasQuestions: Bool
+  public var hasLinks: Bool
+  public var hasQuotes: Bool
+  public var hasIdeas: Bool
+  public var isJournalEntry: Bool
   public var isReminder: Bool
-  public var requiresAction: Bool
+  public var needsResolution: Bool
   public var insufficientInformation: Bool
 
   public init(
-    title: String,
     basis: String,
-    purpose: Purpose,
+    title: String,
     keywords: [String],
     events: [Event],
-    entities: [Entity],
+    locations: [String],
+    entities: [String],
     sentiment: Sentiment,
+    effort: Effort,
+    hasQuestions: Bool,
+    hasLinks: Bool,
+    hasQuotes: Bool,
+    hasIdeas: Bool,
+    isJournalEntry: Bool,
     isReminder: Bool,
-    requiresAction: Bool,
+    needsResolution: Bool,
     insufficientInformation: Bool
   ) {
-    self.title = title
     self.basis = basis
-    self.purpose = purpose
+    self.title = title
     self.keywords = keywords
     self.events = events
+    self.locations = locations
     self.entities = entities
     self.sentiment = sentiment
+    self.effort = effort
+    self.hasQuestions = hasQuestions
+    self.hasLinks = hasLinks
+    self.hasQuotes = hasQuotes
+    self.hasIdeas = hasIdeas
+    self.isJournalEntry = isJournalEntry
     self.isReminder = isReminder
-    self.requiresAction = requiresAction
+    self.needsResolution = needsResolution
     self.insufficientInformation = insufficientInformation
   }
 }
