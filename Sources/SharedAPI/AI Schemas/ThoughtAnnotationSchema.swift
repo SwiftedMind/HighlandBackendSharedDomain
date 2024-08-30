@@ -25,8 +25,8 @@ public struct ThoughtAnnotationSchema: Codable, Sendable {
   public struct Event: Codable, Sendable {
     public var event: String
     public var allDay: Bool?
-    public var start: Date?
-    public var end: Date?
+    public var start: String?
+    public var end: String?
   }
 }
 
