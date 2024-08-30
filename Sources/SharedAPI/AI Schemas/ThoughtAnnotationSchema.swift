@@ -6,7 +6,7 @@ public struct ThoughtAnnotationSchema: Codable, Sendable {
   public var basis: String
   public var title: String
   public var keywords: [String]
-  public var dates: [Event]
+  public var events: [Event]
   public var locations: [String]
   public var entities: [String]
   
@@ -23,7 +23,7 @@ public struct ThoughtAnnotationSchema: Codable, Sendable {
   public var insufficientInformation: Bool
   
   public struct Event: Codable, Sendable {
-    public var event: String
+    public var name: String
     public var allDay: Bool?
     public var start: String?
     public var end: String?
