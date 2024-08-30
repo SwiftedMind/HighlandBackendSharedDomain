@@ -24,14 +24,9 @@ public struct ThoughtAnnotationSchema: Codable, Sendable {
   
   public struct Event: Codable, Sendable {
     public var event: String
-    public var day: String?
-    public var time: String?
-    
-    public init(event: String, day: String?, time: String?) {
-      self.event = event
-      self.day = day
-      self.time = time
-    }
+    public var allDay: Bool?
+    public var start: Date?
+    public var end: Date?
   }
 }
 
