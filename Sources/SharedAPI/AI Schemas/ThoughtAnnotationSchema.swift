@@ -1,5 +1,6 @@
 import Foundation
 import SharedModels
+import SharedUtility
 
 public struct ThoughtAnnotationSchema: Codable, Sendable {
   public var basis: String
@@ -31,5 +32,11 @@ public struct ThoughtAnnotationSchema: Codable, Sendable {
       self.day = day
       self.time = time
     }
+  }
+}
+
+extension ThoughtAnnotationSchema.Event {
+  func parse() throws {
+    
   }
 }
