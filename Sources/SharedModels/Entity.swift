@@ -27,5 +27,6 @@ extension Entity {
     case project
     case product
     case event
+    case unknown
   }
 }
