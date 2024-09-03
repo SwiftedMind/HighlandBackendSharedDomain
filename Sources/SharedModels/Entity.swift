@@ -21,9 +21,11 @@ public struct Entity: Identifiable, Codable, Sendable, Hashable {
 
 extension Entity {
   public enum Kind: String, Codable, Sendable, Hashable {
-    case place
-    case location
+    case personalName
+    case placeName
+    case organizationName
     case project
-    case generic
+    case product
+    case event
   }
 }
