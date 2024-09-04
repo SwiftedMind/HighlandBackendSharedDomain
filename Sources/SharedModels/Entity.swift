@@ -20,7 +20,7 @@ public struct Entity: Identifiable, Codable, Sendable, Hashable {
 }
 
 extension Entity {
-  public enum Kind: String, Codable, Sendable, Hashable {
+  public enum Kind: String, Identifiable, Codable, Sendable, Hashable, CaseIterable {
     case personalName
     case placeName
     case organizationName
@@ -28,5 +28,9 @@ extension Entity {
     case product
     case event
     case unknown
+    
+    public var id: Self {
+      self
+    }
   }
 }
