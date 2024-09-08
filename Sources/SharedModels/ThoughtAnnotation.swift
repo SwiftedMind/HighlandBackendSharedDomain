@@ -1,58 +1,94 @@
 import Foundation
 
 public struct ThoughtAnnotation: Codable, Sendable, Hashable {
-  public var basis: String
   public var title: String
-  public var keywords: [String]
   public var events: [Event]
-  public var locations: [String]
   public var entities: [String]
-
-  // Properties
+  public var keywords: [String]
+  public var links: [String]
   public var sentiment: Sentiment
   public var effort: Effort
-  public var hasQuestions: Bool
-  public var hasLinks: Bool
-  public var hasQuotes: Bool
-  public var hasIdeas: Bool
-  public var isJournalEntry: Bool
-  public var isReminder: Bool
-  public var needsResolution: Bool
-  public var insufficientInformation: Bool
 
+  // Traits
+  public var hasShoppingListItems: Bool
+  public var hasIdeas: Bool
+  public var hasInquiry: Bool
+  public var resolvesInquiry: Bool
+  public var hasGratitude: Bool
+  public var hasFear: Bool
+  public var hasRegret: Bool
+  public var hasHope: Bool
+  public var hasExcitement: Bool
+  public var hasDeadline: Bool
+  public var isHumorous: Bool
+  public var isBrainstorming: Bool
+  public var isInspirational: Bool
+  public var isMotivational: Bool
+  public var isReflective: Bool
+  public var isJournalEntry: Bool
+  public var isNoteToSelf: Bool
+  public var isMinimalContext: Bool
+  public var isForFutureReference: Bool
+  public var isResolvable: Bool
+  public var isActionRequired: Bool
+  
   public init(
-    basis: String,
     title: String,
-    keywords: [String],
     events: [Event],
-    locations: [String],
     entities: [String],
+    keywords: [String],
+    links: [String],
     sentiment: Sentiment,
     effort: Effort,
-    hasQuestions: Bool,
-    hasLinks: Bool,
-    hasQuotes: Bool,
+    hasShoppingListItems: Bool,
     hasIdeas: Bool,
+    hasInquiry: Bool,
+    resolvesInquiry: Bool,
+    hasGratitude: Bool,
+    hasFear: Bool,
+    hasRegret: Bool,
+    hasHope: Bool,
+    hasExcitement: Bool,
+    hasDeadline: Bool,
+    isHumorous: Bool,
+    isBrainstorming: Bool,
+    isInspirational: Bool,
+    isMotivational: Bool,
+    isReflective: Bool,
     isJournalEntry: Bool,
-    isReminder: Bool,
-    needsResolution: Bool,
-    insufficientInformation: Bool
+    isNoteToSelf: Bool,
+    isMinimalContext: Bool,
+    isForFutureReference: Bool,
+    isResolvable: Bool,
+    isActionRequired: Bool
   ) {
-    self.basis = basis
     self.title = title
-    self.keywords = keywords
     self.events = events
-    self.locations = locations
     self.entities = entities
+    self.keywords = keywords
+    self.links = links
     self.sentiment = sentiment
     self.effort = effort
-    self.hasQuestions = hasQuestions
-    self.hasLinks = hasLinks
-    self.hasQuotes = hasQuotes
+    self.hasShoppingListItems = hasShoppingListItems
     self.hasIdeas = hasIdeas
+    self.hasInquiry = hasInquiry
+    self.resolvesInquiry = resolvesInquiry
+    self.hasGratitude = hasGratitude
+    self.hasFear = hasFear
+    self.hasRegret = hasRegret
+    self.hasHope = hasHope
+    self.hasExcitement = hasExcitement
+    self.hasDeadline = hasDeadline
+    self.isHumorous = isHumorous
+    self.isBrainstorming = isBrainstorming
+    self.isInspirational = isInspirational
+    self.isMotivational = isMotivational
+    self.isReflective = isReflective
     self.isJournalEntry = isJournalEntry
-    self.isReminder = isReminder
-    self.needsResolution = needsResolution
-    self.insufficientInformation = insufficientInformation
+    self.isNoteToSelf = isNoteToSelf
+    self.isMinimalContext = isMinimalContext
+    self.isForFutureReference = isForFutureReference
+    self.isResolvable = isResolvable
+    self.isActionRequired = isActionRequired
   }
 }
