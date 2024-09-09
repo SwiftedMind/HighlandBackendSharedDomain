@@ -3,7 +3,7 @@ import Foundation
 public struct ThoughtAnnotation: Codable, Sendable, Hashable {
   public var title: String
   public var events: [Event]
-  public var entities: [String]
+  public var entities: [Entity]
   public var keywords: [String]
   public var links: [String]
   public var sentiment: Sentiment
@@ -35,7 +35,7 @@ public struct ThoughtAnnotation: Codable, Sendable, Hashable {
   public init(
     title: String,
     events: [Event],
-    entities: [String],
+    entities: [Entity],
     keywords: [String],
     links: [String],
     sentiment: Sentiment,

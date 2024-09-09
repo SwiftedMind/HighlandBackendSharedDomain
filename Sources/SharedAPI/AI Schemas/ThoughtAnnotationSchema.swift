@@ -5,12 +5,12 @@ import SharedUtility
 public struct ThoughtAnnotationSchema: Codable, Sendable {
   public var title: String
   public var events: [Event]
-  public var entities: [String]
+  public var entities: [Entity]
   public var keywords: [String]
   public var links: [String]
   public var sentiment: String
   public var effort: String
-  
+
   // Traits
   public var hasShoppingListItems: Bool
   public var hasIdeas: Bool
@@ -33,15 +33,15 @@ public struct ThoughtAnnotationSchema: Codable, Sendable {
   public var isForFutureReference: Bool
   public var isResolvable: Bool
   public var isActionRequired: Bool
-  
+
   public struct Event: Codable, Sendable {
     public var name: String
     public var allDay: Bool?
     public var start: String?
     public var end: String?
   }
-  
-  struct Entity: Codable, Sendable, Hashable {
+
+  public struct Entity: Codable, Sendable, Hashable {
     public var entity: String
     public var type: String
   }
@@ -52,7 +52,7 @@ public struct ThoughtAnnotationSchema: Codable, Sendable {
 extension ThoughtAnnotationSchema.Entity {
   func parse() throws -> SharedModels.Entity {
     return .init(
-      id: .init(), // Doesn't matter in backend
+      id: .init(),  // Doesn't matter in backend
       kind: .init(rawValue: type) ?? .unknown,
       name: entity,
       createdAt: .now
@@ -61,48 +61,53 @@ extension ThoughtAnnotationSchema.Entity {
 }
 
 extension ThoughtAnnotationSchema.Event {
-  func parse() throws -> SharedModels.Event {
-    return .init(
-      id: .init(), // Doesn't matter in backend
-      name: name,
-      allDay: allDay,
-      start: <#T##Date?#>,
-      end: <#T##Date?#>
-    )
+  func parse(dateFormatter: DateFormatter) throws -> SharedModels.Event {
+    var start: Date?
+    var end: Date?
+    
+    if let rawStart = self.start {
+      start = dateFormatter.date(from: rawStart)
+    }
+    
+    if let rawEnd = self.end {
+      end = dateFormatter.date(from: rawEnd)
+    }
+    
+    return Event(name: name, allDay: allDay, start: start, end: end)
   }
 }
 
 extension ThoughtAnnotationSchema {
-  func parse() throws -> ThoughtAnnotation {
+  func parse(dateFormatter: DateFormatter) throws -> ThoughtAnnotation {
     return try .init(
-      title: <#T##String#>,
-      events: events.map { try $0.parse() },
-      entities: <#T##[String]#>,
-      keywords: <#T##[String]#>,
-      links: <#T##[String]#>,
-      sentiment: <#T##Sentiment#>,
-      effort: <#T##Effort#>,
-      hasShoppingListItems: <#T##Bool#>,
-      hasIdeas: <#T##Bool#>,
-      hasInquiry: <#T##Bool#>,
-      resolvesInquiry: <#T##Bool#>,
-      hasGratitude: <#T##Bool#>,
-      hasFear: <#T##Bool#>,
-      hasRegret: <#T##Bool#>,
-      hasHope: <#T##Bool#>,
-      hasExcitement: <#T##Bool#>,
-      hasDeadline: <#T##Bool#>,
-      isHumorous: <#T##Bool#>,
-      isBrainstorming: <#T##Bool#>,
-      isInspirational: <#T##Bool#>,
-      isMotivational: <#T##Bool#>,
-      isReflective: <#T##Bool#>,
-      isJournalEntry: <#T##Bool#>,
-      isNoteToSelf: <#T##Bool#>,
-      isMinimalContext: <#T##Bool#>,
-      isForFutureReference: <#T##Bool#>,
-      isResolvable: <#T##Bool#>,
-      isActionRequired: <#T##Bool#>
+      title: title,
+      events: events.map { try $0.parse(dateFormatter: dateFormatter) },
+      entities: entities.map { try $0.parse() },
+      keywords: keywords,
+      links: links,
+      sentiment: Sentiment(rawValue: sentiment) ?? .neutral,
+      effort: Effort(rawValue: effort) ?? .none,
+      hasShoppingListItems: hasShoppingListItems,
+      hasIdeas: hasIdeas,
+      hasInquiry: hasInquiry,
+      resolvesInquiry: resolvesInquiry,
+      hasGratitude: hasGratitude,
+      hasFear: hasFear,
+      hasRegret: hasRegret,
+      hasHope: hasHope,
+      hasExcitement: hasExcitement,
+      hasDeadline: hasDeadline,
+      isHumorous: isHumorous,
+      isBrainstorming: isBrainstorming,
+      isInspirational: isInspirational,
+      isMotivational: isMotivational,
+      isReflective: isReflective,
+      isJournalEntry: isJournalEntry,
+      isNoteToSelf: isNoteToSelf,
+      isMinimalContext: isMinimalContext,
+      isForFutureReference: isForFutureReference,
+      isResolvable: isResolvable,
+      isActionRequired: isActionRequired
     )
   }
 }
