@@ -87,27 +87,97 @@ extension ThoughtAnnotationSchema {
       links: links,
       sentiment: Sentiment(rawValue: sentiment) ?? .neutral,
       effort: Effort(rawValue: effort) ?? .none,
-      hasShoppingListItems: hasShoppingListItems,
-      hasIdeas: hasIdeas,
-      hasInquiry: hasInquiry,
-      resolvesInquiry: resolvesInquiry,
-      hasGratitude: hasGratitude,
-      hasFear: hasFear,
-      hasRegret: hasRegret,
-      hasHope: hasHope,
-      hasExcitement: hasExcitement,
-      hasDeadline: hasDeadline,
-      isHumorous: isHumorous,
-      isBrainstorming: isBrainstorming,
-      isInspirational: isInspirational,
-      isMotivational: isMotivational,
-      isReflective: isReflective,
-      isJournalEntry: isJournalEntry,
-      isNoteToSelf: isNoteToSelf,
-      isMinimalContext: isMinimalContext,
-      isForFutureReference: isForFutureReference,
-      isResolvable: isResolvable,
-      isActionRequired: isActionRequired
+      tags: tags()
     )
+  }
+  
+  private func tags() -> Set<Tag> {
+    var tags: Set<Tag> = []
+    
+    if hasShoppingListItems {
+      tags.insert(.hasShoppingListItems)
+    }
+    
+    if hasIdeas {
+      tags.insert(.hasIdeas)
+    }
+    
+    if hasInquiry {
+      tags.insert(.hasInquiry)
+    }
+    
+    if resolvesInquiry {
+      tags.insert(.resolvesInquiry)
+    }
+    
+    if hasGratitude {
+      tags.insert(.hasGratitude)
+    }
+    
+    if hasFear {
+      tags.insert(.hasFear)
+    }
+    
+    if hasRegret {
+      tags.insert(.hasRegret)
+    }
+    
+    if hasHope {
+      tags.insert(.hasHope)
+    }
+    
+    if hasExcitement {
+      tags.insert(.hasExcitement)
+    }
+    
+    if hasDeadline {
+      tags.insert(.hasDeadline)
+    }
+    
+    if isHumorous {
+      tags.insert(.isHumorous)
+    }
+    
+    if isBrainstorming {
+      tags.insert(.isBrainstorming)
+    }
+    
+    if isInspirational {
+      tags.insert(.isInspirational)
+    }
+    
+    if isMotivational {
+      tags.insert(.isMotivational)
+    }
+    
+    if isReflective {
+      tags.insert(.isReflective)
+    }
+    
+    if isJournalEntry {
+      tags.insert(.isJournalEntry)
+    }
+    
+    if isNoteToSelf {
+      tags.insert(.isNoteToSelf)
+      
+    }
+    if isMinimalContext {
+      tags.insert(.isMinimalContext)
+    }
+    
+    if isForFutureReference {
+      tags.insert(.isForFutureReference)
+    }
+    
+    if isResolvable {
+      tags.insert(.isResolvable)
+      
+    }
+    if isActionRequired {
+      tags.insert(.isActionRequired)
+    }
+    
+    return tags
   }
 }
