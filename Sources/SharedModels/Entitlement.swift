@@ -2,7 +2,7 @@
 
 import Foundation
 
-public struct Entitlement: Identifiable, Sendable, Hashable, Codable, CustomDebugStringConvertible {
+public struct Entitlement: Identifiable, Sendable, Hashable, Codable {
   public enum Kind: String, Identifiable, Sendable, Hashable, Comparable, CaseIterable, Codable {
     case premium
     
@@ -28,12 +28,7 @@ public struct Entitlement: Identifiable, Sendable, Hashable, Codable, CustomDebu
     self.expiresDate = expiresDate
   }
   
-  public var debugDescription: String {
-    if let expiresDate {
-      return "\(kind.rawValue.capitalized)(Expiry: \(expiresDate.formatted()))"
-    }
-    return "\(kind)"
-  }
+
   
   public var isActive: Bool {
     if let expiresDate {
