@@ -3,14 +3,14 @@ import Foundation
 public struct Event: Identifiable, Codable, Sendable, Hashable {
   public var id: UUID
   public var name: String
-  public var allDay: Bool?
+  public var allDay: Bool
   public var start: Date?
   public var end: Date?
 
   public init(
     id: UUID = .init(),
     name: String,
-    allDay: Bool?,
+    allDay: Bool,
     start: Date?,
     end: Date?
   ) {

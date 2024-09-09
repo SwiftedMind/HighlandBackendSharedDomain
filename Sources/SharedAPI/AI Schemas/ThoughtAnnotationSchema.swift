@@ -80,7 +80,7 @@ extension ThoughtAnnotationSchema.Event {
       end = dateFormatter.date(from: rawEnd)
     }
 
-    return Event(name: name, allDay: allDay, start: start, end: end)
+    return Event(name: name, allDay: allDay ?? false, start: start, end: end)
   }
 }
 
