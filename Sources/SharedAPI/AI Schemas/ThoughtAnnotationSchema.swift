@@ -50,7 +50,7 @@ public struct ThoughtAnnotationSchema: Codable, Sendable {
 // MARK: - Parsing
 
 extension ThoughtAnnotationSchema.Entity {
-  func parse() throws -> SharedModels.Entity {
+  public func parse() throws -> SharedModels.Entity {
     return .init(
       id: .init(),  // Doesn't matter in backend
       kind: .init(rawValue: type) ?? .unknown,
@@ -61,24 +61,24 @@ extension ThoughtAnnotationSchema.Entity {
 }
 
 extension ThoughtAnnotationSchema.Event {
-  func parse(dateFormatter: DateFormatter) throws -> SharedModels.Event {
+  public func parse(dateFormatter: DateFormatter) throws -> SharedModels.Event {
     var start: Date?
     var end: Date?
-    
+
     if let rawStart = self.start {
       start = dateFormatter.date(from: rawStart)
     }
-    
+
     if let rawEnd = self.end {
       end = dateFormatter.date(from: rawEnd)
     }
-    
+
     return Event(name: name, allDay: allDay, start: start, end: end)
   }
 }
 
 extension ThoughtAnnotationSchema {
-  func parse(dateFormatter: DateFormatter) throws -> ThoughtAnnotation {
+  public func parse(dateFormatter: DateFormatter) throws -> ThoughtAnnotation {
     return try .init(
       title: title,
       events: events.map { try $0.parse(dateFormatter: dateFormatter) },
