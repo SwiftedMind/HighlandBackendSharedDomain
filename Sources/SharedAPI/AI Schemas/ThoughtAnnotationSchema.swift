@@ -43,7 +43,7 @@ public struct ThoughtAnnotationSchema: Codable, Sendable {
 
   public struct Entity: Codable, Sendable, Hashable {
     public var entity: String
-    public var type: String
+    public var type: String?
   }
 }
 
@@ -51,9 +51,16 @@ public struct ThoughtAnnotationSchema: Codable, Sendable {
 
 extension ThoughtAnnotationSchema.Entity {
   public func parse() throws -> SharedModels.Entity {
+    var kind: Entity.Kind {
+      if let type {
+        return .init(rawValue: type) ?? .unknown
+      }
+      return .unknown
+    }
+    
     return .init(
-      id: .init(),  // Doesn't matter in backend
-      kind: .init(rawValue: type) ?? .unknown,
+      id: .init(),
+      kind: kind,
       name: entity,
       createdAt: .now
     )

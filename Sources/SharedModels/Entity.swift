@@ -24,10 +24,10 @@ extension Entity {
     case personalName
     case placeName
     case organizationName
-    case project
-    case product
-    case event
-    case unknown
+    case projectName
+    case productName
+    case eventName
+    case unknownName
     
     public var id: Self {
       self
