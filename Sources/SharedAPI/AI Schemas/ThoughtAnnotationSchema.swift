@@ -53,9 +53,9 @@ extension ThoughtAnnotationSchema.Entity {
   public func parse() throws -> SharedModels.Entity {
     var kind: Entity.Kind {
       if let type {
-        return .init(rawValue: type) ?? .unknown
+        return .init(rawValue: type) ?? .unknownName
       }
-      return .unknown
+      return .unknownName
     }
     
     return .init(
