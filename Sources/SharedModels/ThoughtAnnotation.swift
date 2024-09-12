@@ -23,7 +23,7 @@ public struct ThoughtAnnotation: Codable, Sendable, Hashable {
     tags: Set<Tag>
   ) {
     self.title = title
-    self.summary = title
+    self.summary = summary
     self.events = events
     self.entities = entities
     self.keywords = keywords
