@@ -4,6 +4,7 @@ import SharedUtility
 
 public struct ThoughtAnnotationSchema: Codable, Sendable {
   public var title: String
+  public var basis: String
   public var events: [Event]
   public var entities: [Entity]
   public var keywords: [String]
@@ -88,6 +89,7 @@ extension ThoughtAnnotationSchema {
   public func parse(dateFormatter: DateFormatter) throws -> ThoughtAnnotation {
     return try .init(
       title: title,
+      summary: basis,
       events: events.map { try $0.parse(dateFormatter: dateFormatter) },
       entities: entities.map { try $0.parse() },
       keywords: keywords,

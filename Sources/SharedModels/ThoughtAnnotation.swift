@@ -2,6 +2,7 @@ import Foundation
 
 public struct ThoughtAnnotation: Codable, Sendable, Hashable {
   public var title: String
+  public var summary: String
   public var events: [Event]
   public var entities: [Entity]
   public var keywords: [String]
@@ -12,6 +13,7 @@ public struct ThoughtAnnotation: Codable, Sendable, Hashable {
   
   public init(
     title: String,
+    summary: String,
     events: [Event],
     entities: [Entity],
     keywords: [String],
@@ -21,6 +23,7 @@ public struct ThoughtAnnotation: Codable, Sendable, Hashable {
     tags: Set<Tag>
   ) {
     self.title = title
+    self.summary = title
     self.events = events
     self.entities = entities
     self.keywords = keywords
