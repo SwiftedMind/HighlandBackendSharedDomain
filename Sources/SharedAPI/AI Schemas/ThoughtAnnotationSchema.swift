@@ -103,6 +103,10 @@ extension ThoughtAnnotationSchema {
   private func tags() -> Set<Tag> {
     var tags: Set<Tag> = []
     
+    if links.isEmpty == false {
+      tags.insert(.hasLinks)
+    }
+    
     if hasShoppingListItems {
       tags.insert(.hasShoppingListItems)
     }
