@@ -6,4 +6,5 @@ public enum Sentiment: String, Identifiable, Sendable, Codable, Hashable, CaseIt
   case negative
   case neutral
   case positive
+  case mixed
 }

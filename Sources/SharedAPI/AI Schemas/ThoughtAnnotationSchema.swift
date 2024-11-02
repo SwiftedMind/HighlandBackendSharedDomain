@@ -3,37 +3,55 @@ import SharedModels
 import SharedUtility
 
 public struct ThoughtAnnotationSchema: Codable, Sendable {
-  public var title: String
   public var basis: String
+  public var title: String
   public var events: [Event]
   public var entities: [Entity]
-  public var keywords: [String]
   public var links: [String]
+  public var tags: [Tag]
+  public var category: String
+  public var status: String?
   public var sentiment: String
+  public var emotionalIntensity: String
+  public var timeframe: String
+  public var priority: String
+  public var clarity: String
   public var effort: String
-
-  // Traits
-  public var hasShoppingListItems: Bool
-  public var hasIdeas: Bool
-  public var hasInquiry: Bool
-  public var resolvesInquiry: Bool
-  public var hasGratitude: Bool
-  public var hasFear: Bool
-  public var hasRegret: Bool
-  public var hasHope: Bool
-  public var hasExcitement: Bool
-  public var hasDeadline: Bool
-  public var isHumorous: Bool
-  public var isBrainstorming: Bool
-  public var isInspirational: Bool
-  public var isMotivational: Bool
-  public var isReflective: Bool
-  public var isJournalEntry: Bool
-  public var isNoteToSelf: Bool
-  public var isMinimalContext: Bool
-  public var isForFutureReference: Bool
-  public var isResolvable: Bool
-  public var isActionRequired: Bool
+  public var complexity: String
+  
+  public init(
+    basis: String,
+    title: String,
+    events: [Event],
+    entities: [Entity],
+    links: [String],
+    tags: [Tag],
+    category: String,
+    status: String?,
+    sentiment: String,
+    emotionalIntensity: String,
+    timeframe: String,
+    priority: String,
+    clarity: String,
+    effort: String,
+    complexity: String
+  ) {
+    self.basis = basis
+    self.title = title
+    self.events = events
+    self.entities = entities
+    self.links = links
+    self.tags = tags
+    self.category = category
+    self.status = status
+    self.sentiment = sentiment
+    self.emotionalIntensity = emotionalIntensity
+    self.timeframe = timeframe
+    self.priority = priority
+    self.clarity = clarity
+    self.effort = effort
+    self.complexity = complexity
+  }
 
   public struct Event: Codable, Sendable {
     public var name: String
@@ -88,109 +106,21 @@ extension ThoughtAnnotationSchema.Event {
 extension ThoughtAnnotationSchema {
   public func parse(dateFormatter: DateFormatter) throws -> ThoughtAnnotation {
     return try .init(
+      basis: basis,
       title: title,
-      summary: basis,
       events: events.map { try $0.parse(dateFormatter: dateFormatter) },
       entities: entities.map { try $0.parse() },
-      keywords: keywords,
       links: links,
+      tags: tags,
+      category: BaseCategory(rawValue: category) ?? .note,
+      status: Status(rawValue: status ?? ""),
       sentiment: Sentiment(rawValue: sentiment) ?? .neutral,
-      effort: Effort(rawValue: effort) ?? .none,
-      tags: tags()
+      emotionalIntensity: EmotionalIntensity(rawValue: emotionalIntensity) ?? .neutral,
+      timeframe: Timeframe(rawValue: timeframe) ?? .long,
+      priority: Priority(rawValue: priority) ?? .low,
+      clarity: Clarity(rawValue: clarity) ?? .clear,
+      effort: Effort(rawValue: effort) ?? .low,
+      complexity: Complexity(rawValue: complexity) ?? .simple
     )
-  }
-  
-  private func tags() -> Set<Tag> {
-    var tags: Set<Tag> = []
-    
-    if links.isEmpty == false {
-      tags.insert(.hasLinks)
-    }
-    
-    if hasShoppingListItems {
-      tags.insert(.hasShoppingListItems)
-    }
-    
-    if hasIdeas {
-      tags.insert(.hasIdeas)
-    }
-    
-    if hasInquiry {
-      tags.insert(.hasInquiry)
-    }
-    
-    if resolvesInquiry {
-      tags.insert(.resolvesInquiry)
-    }
-    
-    if hasGratitude {
-      tags.insert(.hasGratitude)
-    }
-    
-    if hasFear {
-      tags.insert(.hasFear)
-    }
-    
-    if hasRegret {
-      tags.insert(.hasRegret)
-    }
-    
-    if hasHope {
-      tags.insert(.hasHope)
-    }
-    
-    if hasExcitement {
-      tags.insert(.hasExcitement)
-    }
-    
-    if hasDeadline {
-      tags.insert(.hasDeadline)
-    }
-    
-    if isHumorous {
-      tags.insert(.isHumorous)
-    }
-    
-    if isBrainstorming {
-      tags.insert(.isBrainstorming)
-    }
-    
-    if isInspirational {
-      tags.insert(.isInspirational)
-    }
-    
-    if isMotivational {
-      tags.insert(.isMotivational)
-    }
-    
-    if isReflective {
-      tags.insert(.isReflective)
-    }
-    
-    if isJournalEntry {
-      tags.insert(.isJournalEntry)
-    }
-    
-    if isNoteToSelf {
-      tags.insert(.isNoteToSelf)
-      
-    }
-    if isMinimalContext {
-      tags.insert(.isMinimalContext)
-    }
-    
-    if isForFutureReference {
-      tags.insert(.isForFutureReference)
-    }
-    
-    if isResolvable {
-      tags.insert(.isResolvable)
-      
-    }
-    if isActionRequired {
-      tags.insert(.isActionRequired)
-    }
-    
-    return tags
   }
 }
