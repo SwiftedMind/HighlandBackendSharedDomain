@@ -1,5 +1,5 @@
 /// Prefixed to avoid conflicts (and random crashes) with a `Category` typedef in the Objective-C runtime.
-public enum BaseCategory: String, Codable, Sendable, Hashable {
+public enum BaseCategory: String, Codable, Sendable, Hashable, CaseIterable {
   case note
   case reference
   case task
