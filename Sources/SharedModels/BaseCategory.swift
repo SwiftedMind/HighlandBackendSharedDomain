@@ -2,13 +2,5 @@
 public enum BaseCategory: String, Identifiable, Codable, Sendable, Hashable, CaseIterable {
   public var id: Self { self }
   case note
-  case reference
   case task
-  case goal
-  case reminder
-  case idea
-  case question
-  case insight
-  case reflection
-  case problem
 }
