@@ -1,8 +1,8 @@
 import Foundation
 
 public struct ThoughtAnnotation: Codable, Sendable, Hashable {
-  public var basis: String
   public var title: String
+  public var summary: String
   public var events: [Event]
   public var entities: [Entity]
   public var links: [String]
@@ -18,8 +18,8 @@ public struct ThoughtAnnotation: Codable, Sendable, Hashable {
   public var complexity: Complexity
   
   public init(
-    basis: String,
     title: String,
+    summary: String,
     events: [Event],
     entities: [Entity],
     links: [String],
@@ -34,8 +34,8 @@ public struct ThoughtAnnotation: Codable, Sendable, Hashable {
     effort: Effort,
     complexity: Complexity
   ) {
-    self.basis = basis
     self.title = title
+    self.summary = summary
     self.events = events
     self.entities = entities
     self.links = links

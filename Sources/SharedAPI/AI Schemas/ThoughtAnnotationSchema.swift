@@ -3,8 +3,8 @@ import SharedModels
 import SharedUtility
 
 public struct ThoughtAnnotationSchema: Codable, Sendable {
-  public var basis: String
   public var title: String
+  public var summary: String
   public var events: [Event]
   public var entities: [Entity]
   public var links: [String]
@@ -20,8 +20,8 @@ public struct ThoughtAnnotationSchema: Codable, Sendable {
   public var complexity: String
   
   public init(
-    basis: String,
     title: String,
+    summary: String,
     events: [Event],
     entities: [Entity],
     links: [String],
@@ -36,8 +36,8 @@ public struct ThoughtAnnotationSchema: Codable, Sendable {
     effort: String,
     complexity: String
   ) {
-    self.basis = basis
     self.title = title
+    self.summary = summary
     self.events = events
     self.entities = entities
     self.links = links
@@ -106,8 +106,8 @@ extension ThoughtAnnotationSchema.Event {
 extension ThoughtAnnotationSchema {
   public func parse(dateFormatter: DateFormatter) throws -> ThoughtAnnotation {
     return try .init(
-      basis: basis,
       title: title,
+      summary: summary,
       events: events.map { try $0.parse(dateFormatter: dateFormatter) },
       entities: entities.map { try $0.parse() },
       links: links,
